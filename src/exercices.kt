@@ -62,7 +62,13 @@ fun randomFind(){
         }
     }
 }
-
+fun minMaxSum(){
+    var numbers: Array<Int> = emptyArray()
+    for (i in 1..10) {
+        numbers += (0..100).random()
+    }
+    println(numbers.contentToString())
+}
 fun main(){
-    randomFind()
+    minMaxSum()
 }
