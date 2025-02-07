@@ -62,13 +62,28 @@ fun randomFind(){
         }
     }
 }
-fun minMaxSum(){
+fun numbersInfo(){
     var numbers: Array<Int> = emptyArray()
+    var tabPair: Array<Int> = emptyArray()
+    var tabImpair: Array<Int> = emptyArray()
+
     for (i in 1..10) {
         numbers += (0..100).random()
+        if (numbers[i - 1] % 2 == 0){
+            tabPair += numbers[i - 1]
+        }
+        else {
+            tabImpair += numbers[i - 1]
+        }
     }
     println(numbers.contentToString())
+    val maxNumber = numbers.max()
+    val minNumber = numbers.min()
+    val sum = numbers.sum()
+    println("The sum is $sum, the minimum is $minNumber, and the maximum is $maxNumber.")
+    println(tabPair.contentToString())
+    println(tabImpair.contentToString())
 }
 fun main(){
-    minMaxSum()
+    numbersInfo()
 }
