@@ -1,9 +1,13 @@
+//Écrire le programme Bonjour.kt qui demande à l’utilisateur de saisir son nom et qui affiche un
+//message personnalisé ( « bonjour durand »)
 fun hello(){
     println("Please indicate your first name: ")
     val name = readln().toString()
     println("Hello $name.")
 }
 
+//Écrire un programme qui demande l’âge de l’utilisateur et lui indique s’il a droit au tarif réduit
+//(moins de 26 ans)
 fun reducedPrice(){
     println("Please enter your age: ")
     val age = readln().toInt()
@@ -11,13 +15,15 @@ fun reducedPrice(){
         println("You are eligible for a price reduction")
     }
 }
-
+//Ecrire un programme Compteur.php qui permet de compter et d’afficher les nombres de 1 jusqu’à
+//20.
 fun counter(){
     for (i in 1..20){
         println("$i")
     }
 }
 
+//Check si la valeur donnée est pair
 fun isEven(n: Int): Boolean{
     if (n % 2 == 0){
         return true
@@ -101,11 +107,11 @@ fun serieInverse(n: Int): List<Int>{
     return maliste
 }
 
-fun parity(numbers: MutableList<Int>): Array<MutableList<Int>> {
-    val parityList: MutableList<Int> = mutableListOf()
+fun parity(numbers: MutableList<Int>): MutableList<MutableList<Int>> {
     val evenList: MutableList<Int> = mutableListOf()
     val oddList: MutableList<Int> = mutableListOf()
-    for (i in 0..numbers.size - 1){
+
+    for (i in 0..<numbers.size - 1){
         if (isEven(numbers[i])) {
             evenList.add(numbers[i])
         }
@@ -113,18 +119,22 @@ fun parity(numbers: MutableList<Int>): Array<MutableList<Int>> {
             oddList.add(numbers[i])
         }
     }
-    val parity: Array<MutableList<Int>> = arrayOf(evenList, oddList)
-    return parity
+    val parityList: MutableList<MutableList<Int>> = mutableListOf(evenList, oddList)
+    return parityList
 }
 
-fun getTableau(): MutableList<Int>{
+fun getTableau(quantity: Int, range: Int): MutableList<Int>{
     val tableau: MutableList<Int> = mutableListOf()
-    for (i in 1..10){
-        tableau.add((1..100).random())
+    for (i in 1..quantity){
+        tableau.add((1..range).random())
     }
     return tableau
 }
+
+fun listeDiviseurs(){
+
+}
+
 fun main(){
-    println(serieInverse(10))
-    println(parity(getTableau()))
+    println(parity(getTableau(20, 100)))
 }
