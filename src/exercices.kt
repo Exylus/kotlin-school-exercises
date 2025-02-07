@@ -111,11 +111,10 @@ fun parity(numbers: MutableList<Int>): MutableList<MutableList<Int>> {
     val evenList: MutableList<Int> = mutableListOf()
     val oddList: MutableList<Int> = mutableListOf()
 
-    for (i in 0..<numbers.size - 1){
+    for (i in 0..<numbers.size - 1) {
         if (isEven(numbers[i])) {
             evenList.add(numbers[i])
-        }
-        else {
+        } else {
             oddList.add(numbers[i])
         }
     }
@@ -123,18 +122,25 @@ fun parity(numbers: MutableList<Int>): MutableList<MutableList<Int>> {
     return parityList
 }
 
-fun getTableau(quantity: Int, range: Int): MutableList<Int>{
+fun getTableau(quantity: Int, range: Int): MutableList<Int> {
     val tableau: MutableList<Int> = mutableListOf()
-    for (i in 1..quantity){
+    for (i in 1..quantity) {
         tableau.add((1..range).random())
     }
     return tableau
 }
 
-fun listeDiviseurs(){
-
+fun listeDiviseurs(n: Int): MutableList<Int> {
+    val tableau: MutableList<Int> = mutableListOf()
+    for (i in 1..n){
+        if (n % i == 0){
+            tableau.add(i)
+        }
+    }
+    return tableau
 }
 
 fun main(){
-    println(parity(getTableau(20, 100)))
+    println(parity(getTableau(10, 100)))
+    println(listeDiviseurs(100))
 }
