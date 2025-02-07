@@ -18,12 +18,12 @@ fun counter(){
     }
 }
 
-fun parity(n: Int){
+fun isEven(n: Int): Boolean{
     if (n % 2 == 0){
-        println("$n is even")
+        return true
     }
     else {
-        println("$n is odd")
+        return false
     }
 }
 
@@ -63,9 +63,9 @@ fun randomFind(){
     }
 }
 fun numbersInfo(){
-    var numbers: Array<Int> = emptyArray()
-    var tabPair: Array<Int> = emptyArray()
-    var tabImpair: Array<Int> = emptyArray()
+    val numbers: MutableList<Int> = mutableListOf()
+    val tabPair: MutableList<Int> = mutableListOf()
+    val tabImpair: MutableList<Int> = mutableListOf()
 
     for (i in 1..10) {
         numbers += (0..100).random()
@@ -76,14 +76,55 @@ fun numbersInfo(){
             tabImpair += numbers[i - 1]
         }
     }
-    println(numbers.contentToString())
+    println(numbers)
     val maxNumber = numbers.max()
     val minNumber = numbers.min()
     val sum = numbers.sum()
     println("The sum is $sum, the minimum is $minNumber, and the maximum is $maxNumber.")
-    println(tabPair.contentToString())
-    println(tabImpair.contentToString())
+    println(tabPair)
+    println(tabImpair)
+}
+
+fun serie(n: Int): List<Int>{
+    val maliste: MutableList<Int> = mutableListOf()
+    for (i in 1..n){
+        maliste.add(i)
+    }
+    return maliste
+}
+
+fun serieInverse(n: Int): List<Int>{
+    val maliste: MutableList<Int> = mutableListOf()
+    for (i in (1..n).reversed()){
+        maliste.add(i)
+    }
+    return maliste
+}
+
+fun parity(numbers: MutableList<Int>): Array<MutableList<Int>> {
+    val parityList: MutableList<Int> = mutableListOf()
+    val evenList: MutableList<Int> = mutableListOf()
+    val oddList: MutableList<Int> = mutableListOf()
+    for (i in 0..numbers.size - 1){
+        if (isEven(numbers[i])) {
+            evenList.add(numbers[i])
+        }
+        else {
+            oddList.add(numbers[i])
+        }
+    }
+    val parity: Array<MutableList<Int>> = arrayOf(evenList, oddList)
+    return parity
+}
+
+fun getTableau(): MutableList<Int>{
+    val tableau: MutableList<Int> = mutableListOf()
+    for (i in 1..10){
+        tableau.add((1..100).random())
+    }
+    return tableau
 }
 fun main(){
-    numbersInfo()
+    println(serieInverse(10))
+    println(parity(getTableau()))
 }
