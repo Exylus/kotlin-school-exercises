@@ -140,6 +140,15 @@ fun listeDiviseurs(n: Int): MutableList<Int> {
     return tableau
 }
 
+fun estPremier(n: Int): Boolean {
+    if (listeDiviseurs(n).size != 2){
+        return false
+    }
+    else {
+        return true
+    }
+}
+
 fun main(){
     println(parity(getTableau(10, 100)))
     println(listeDiviseurs(100))
