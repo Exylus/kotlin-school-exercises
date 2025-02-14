@@ -149,6 +149,7 @@ fun estPremier(n: Int): Boolean {
     }
 }
 
+
 fun main(){
     println(parity(getTableau(10, 100)))
     println(listeDiviseurs(100))
