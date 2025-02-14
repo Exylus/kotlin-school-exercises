@@ -107,7 +107,7 @@ fun serieInverse(n: Int): List<Int>{
     return maliste
 }
 
-fun parity(numbers: MutableList<Int>): MutableList<MutableList<Int>> {
+fun parity(numbers: MutableList<Int>): MutableMap<String, MutableList<Int>> {
     val evenList: MutableList<Int> = mutableListOf()
     val oddList: MutableList<Int> = mutableListOf()
 
@@ -118,13 +118,13 @@ fun parity(numbers: MutableList<Int>): MutableList<MutableList<Int>> {
             oddList.add(numbers[i])
         }
     }
-    val parityList: MutableList<MutableList<Int>> = mutableListOf(evenList, oddList)
+    val parityList: MutableMap<String , MutableList<Int>> = mutableMapOf("Pair" to evenList,"Impair" to oddList)
     return parityList
 }
 
 fun getTableau(quantity: Int, range: Int): MutableList<Int> {
     val tableau: MutableList<Int> = mutableListOf()
-    for (i in 1..quantity) {
+    for (i in 1..quantity + 1) {
         tableau.add((1..range).random())
     }
     return tableau
@@ -141,12 +141,7 @@ fun listeDiviseurs(n: Int): MutableList<Int> {
 }
 
 fun estPremier(n: Int): Boolean {
-    if (listeDiviseurs(n).size != 2){
-        return false
-    }
-    else {
-        return true
-    }
+    return if(listeDiviseurs(n).size != 2) false else true;
 }
 
 
