@@ -1,13 +1,13 @@
 fun main(){
-    val game = battleship()  // Create one instance
-    game.logBoards()         // Log the boards for that instance
+    val prep = BoardInitialization()  // Create one instance
+    prep.start()      // Log the boards for that instance
 }
 
-class battleship {
-    val playerOneBoard: MutableList<MutableList<Int>> = randomBoatCoordinates(initialise())
-    val playerTwoBoard: MutableList<MutableList<Int>> = randomBoatCoordinates(initialise())
+class BoardInitialization {
+    private val playerOneBoard: MutableList<MutableList<Int>> = randomBoatCoordinates(initialize())
+    private val playerTwoBoard: MutableList<MutableList<Int>> = randomBoatCoordinates(initialize())
 
-    fun logBoards() {
+    private fun logBoards() {
         println("Player 1's board:")
         for (row in playerOneBoard) {
             println(row)
@@ -18,8 +18,14 @@ class battleship {
         }
     }
 
+    fun start(): MutableList<MutableList<MutableList<Int>>> {
+        val matchup: MutableList<MutableList<MutableList<Int>>> = mutableListOf(playerOneBoard, playerTwoBoard)
+        logBoards()
+        return matchup
+    }
+
     companion object {
-        fun initialise(): MutableList<MutableList<Int>> {
+        fun initialize(): MutableList<MutableList<Int>> {
             println("Initialisation du jeu")
             val initializedBoard: MutableList<MutableList<Int>> = mutableListOf()
             for (i in 0 until 10) {
@@ -31,7 +37,7 @@ class battleship {
         }
     }
 
-    fun randomizeBoatOrder(): MutableList<Int> {
+    private fun randomizeBoatOrder(): MutableList<Int> {
         val carrier = 5
         val battleship = 4
         val cruiser = 3
@@ -82,7 +88,7 @@ class battleship {
         return true
     }
 
-    fun randomBoatCoordinates(playerBoard: MutableList<MutableList<Int>>): MutableList<MutableList<Int>> {
+    private fun randomBoatCoordinates(playerBoard: MutableList<MutableList<Int>>): MutableList<MutableList<Int>> {
         val boats = randomizeBoatOrder()
 
         for (boatSize in boats) {
@@ -106,4 +112,8 @@ class battleship {
         }
         return playerBoard
     }
+}
+
+class Battleship {
+
 }
