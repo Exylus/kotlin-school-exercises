@@ -1,3 +1,5 @@
+import Location
+
 //Écrire le programme Bonjour.kt qui demande à l’utilisateur de saisir son nom et qui affiche un
 //message personnalisé ( « bonjour durand »)
 fun hello(){
@@ -146,6 +148,5 @@ fun estPremier(n: Int): Boolean {
 
 
 fun main(){
-    println(parity(getTableau(10, 100)))
-    println(listeDiviseurs(100))
+    Location("Nekena", "E", 450, 12)
 }
