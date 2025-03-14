@@ -1,4 +1,12 @@
-class Personne {
+import kotlin.math.round
+import kotlin.math.roundToInt
+
+class Personne (name: String, weight: Double, height: Double){
+    val name: String = name
+    val weight: Double = weight
+    val height: Double = height
+    val imc = round(calculateIMC(weight, height) * 100) / 100
+
     fun calculateIMC (weight: Double, height: Double): Double{
         val imc = weight / (height * height)
         return imc

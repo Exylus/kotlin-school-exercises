@@ -145,8 +145,3 @@ fun listeDiviseurs(n: Int): MutableList<Int> {
 fun estPremier(n: Int): Boolean {
     return if(listeDiviseurs(n).size != 2) false else true;
 }
-
-
-fun main(){
-    Location("Nekena", "E", 450, 12)
-}
