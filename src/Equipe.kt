@@ -7,7 +7,7 @@ class Equipe {
 
     constructor()
 
-    constructor(nom: String, joueurs: MutableList<Joueur>, nbVictoires: Int, nbDefaites: Int, nbNuls: Int) {
+    constructor(nom: String, joueurs: MutableList<Joueur> = mutableListOf(), nbVictoires: Int = 0, nbDefaites: Int = 0, nbNuls: Int = 0) {
         this.nom = nom
         this.joueurs = joueurs
         this.nbVictoires = nbVictoires
@@ -16,8 +16,8 @@ class Equipe {
     }
 
     fun ajouterJoueur(): MutableList<Joueur>{
-        println("Veuillez entrer les informations du joueur\n Nom, Position, NbButs, nbPasses, cartonsJaunes, cartonsRouges")
-        this.joueurs.add(Joueur(readln(), readln(), readln().toInt(), readln().toInt(), readln().toInt(), readln().toInt()))
+        println("Veuillez entrer les informations du joueur\n Nom & position: ")
+        this.joueurs.add(Joueur().creerJoueur(readln(), readln()))
         println("Le joueur a ete ajoute avec succes")
         return this.joueurs
     }
@@ -38,18 +38,19 @@ class Equipe {
         for (joueur in this.joueurs) {
             listeJoueurs.add(joueur.nom)
         }
+        println("Liste des joueurs de l'equipe " + this.nom + ": ")
         if (listeJoueurs.isEmpty()) {
             println("Aucun joueur")
             return mutableListOf()
         }
-            println("Liste des joueurs de l'equipe " + this.nom + "\n" + listeJoueurs.toString())
+            println(listeJoueurs)
             return listeJoueurs;
     }
 
     fun calculerScoreEquipe(): Int {
         var score = 0
         for (joueur in joueurs) {
-            score = joueur.nbButs * 3 + joueur.nbPasses - joueur.cartonsRouge * 3 - joueur.cartonsJaune
+            score += joueur.nbButs * 3 + joueur.nbPasses - joueur.cartonsRouge * 3 - joueur.cartonsJaune
         }
         return score
     }

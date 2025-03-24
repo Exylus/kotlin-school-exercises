@@ -8,7 +8,7 @@ class Joueur {
 
     constructor()
 
-    constructor(nom: String, poste: String, nbButs: Int, nbPasses: Int, cartonsJaune: Int, cartonsRouge: Int){
+    constructor(nom: String, poste: String, nbButs: Int = 0, nbPasses: Int = 0, cartonsJaune: Int = 0, cartonsRouge: Int = 0){
         this.nom = nom
         this.poste = poste
         this.nbButs = nbButs
@@ -16,6 +16,11 @@ class Joueur {
         this.cartonsJaune = cartonsJaune
         this.cartonsRouge = cartonsRouge
     }
+
+    fun creerJoueur(nom: String, position: String): Joueur {
+        return Joueur(nom, position)
+    }
+
 
     fun marquerBut(): Int = this.nbButs++
 
