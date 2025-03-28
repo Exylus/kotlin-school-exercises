@@ -1,0 +1,1 @@
+class AmpouleLed : Ampoule("LED", 1)

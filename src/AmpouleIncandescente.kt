@@ -1,0 +1,1 @@
+class AmpouleIncandescente : Ampoule("Incandescente", 10)
